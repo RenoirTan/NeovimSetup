@@ -2,7 +2,7 @@
 
 Copy `./init.lua` to `~/.config/nvim/init.lua` and watch the magic happen.
 
-![Screenshot of Stopwatchd Repo](docs/screenshots/stopwatchd.png)
+![Screenshot of Stopwatchd Repo](doc/screenshots/stopwatchd.png)
 
 ## Plugins
 
