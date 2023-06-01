@@ -17,18 +17,29 @@ vim.o.colorcolumn = "80,100"
 
 -- Shift focus to adjacent "window"
 -- e.g. Ctrl+h/← to focus on window to the left of the current window
--- left
+-- left: ctrl+h or ctrl+left
 vim.keymap.set("n", "<C-h>", "<ESC><C-w>h", {noremap=true, silent=true})
 vim.keymap.set("n", "<C-Left>", "<ESC><C-w>h", {noremap=true, silent=true})
--- down
+-- down: ctrl+j or ctrl+down
 vim.keymap.set("n", "<C-j>", "<ESC><C-w>j", {noremap=true, silent=true})
 vim.keymap.set("n", "<C-Down>", "<ESC><C-w>j", {noremap=true, silent=true})
--- up
+-- up: ctrl+k or ctrl+up
 vim.keymap.set("n", "<C-k>", "<ESC><C-w>k", {noremap=true, silent=true})
 vim.keymap.set("n", "<C-Up>", "<ESC><C-w>k", {noremap=true, silent=true})
--- right
+-- right: ctrl+l or ctrl+right
 vim.keymap.set("n", "<C-l>", "<ESC><C-w>l", {noremap=true, silent=true})
 vim.keymap.set("n", "<C-Right>", "<ESC><C-w>l", {noremap=true, silent=true})
+
+-- Copy and paste to system clipboard instead of registers
+-- copy: ctrl+c
+vim.keymap.set({"n", "v"}, "<C-c>", "\"+y", {noremap=true, silent=true})
+-- cut: ctrl+x
+vim.keymap.set({"n", "v"}, "<C-x>", "\"+x", {noremap=true, silent=true})
+-- paste: ctrl+p
+vim.keymap.set({"n", "v"}, "<C-v>", "\"+p", {noremap=true, silent=true})
+
+-- Select all: ctrl+a
+vim.keymap.set({"n", "v"}, "<C-a>", "<ESC>ggVG", {noremap=true, silent=true})
 
 -- Install and initialize lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
@@ -177,7 +188,7 @@ require("lazy").setup({
                     vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
                     vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
                     vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
-                    vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, opts)
+                    vim.keymap.set('n', 'gs', vim.lsp.buf.signature_help, opts)
                     vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, opts)
                     vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, opts)
                     vim.keymap.set('n', '<space>wl', function()
@@ -276,9 +287,9 @@ require("lazy").setup({
                 line_number_style()
             end
             --[[ Make startup look consistent ]]
-            transparent.toggle(false) -- need this because the following line is insufficient
-            transparent.toggle(true)
-            toggle_transparency({})
+            transparent.toggle(false) -- set starting state to opaque
+            toggle_transparency({}) -- refresh certain settings
+            toggle_transparency({}) -- rerefresh certain settings and put it back to opaque
             --[[ End startup ]]
             vim.api.nvim_create_user_command("ToggleTransparency", toggle_transparency, {nargs = 0})
             -- toggle transparency
@@ -291,6 +302,17 @@ require("lazy").setup({
     },
     {   -- sudo write file
         "lambdalisue/suda.vim"
+    },
+    {   -- markdown preview
+        "iamcco/markdown-preview.nvim",
+        event = "BufRead",
+        -- ft = "markdown",
+        -- cmd = { "MarkdownPreview", "MarkdownPreviewStop" },
+        build = function() vim.fn["mkdp#util#install"]() end,
+        config = function()
+            vim.g.mkdp_auto_close = 0
+            vim.g.mkdp_theme = "dark"
+        end
     }
 })
 

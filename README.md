@@ -20,6 +20,8 @@ Copy `./init.lua` to `~/.config/nvim/init.lua` and watch the magic happen.
 | [tanvirtin/monokai.nvim](https://github.com/tanvirtin/monokai.nvim) | Monokai theme. |
 | [xiyaowong/transparent.nvim](https://github.com/xiyaowong/transparent.nvim) | Sets background transparency. |
 | [lambdalisue/suda.vim](https://github.com/lambdalisue/suda.vim) | Sudo write to readonly files. |
+| [iamcco/markdown-preview.nvim](https://github.com/iamcco/markdown-preview.nvim) | Start a server that previews your markdown documents in realtime. |
+
 
 ## External Software
 
@@ -32,6 +34,7 @@ Some plugins have their own dependencies that you have to install from somewhere
    - [rust_analyzer](https://rust-analyzer.github.io/)
    - [ccls](https://github.com/MaskRay/ccls)
  - `sudo` for `lambdalisue/suda.vim`.
+ - `node.js` and `yarn` for iamcco/markdown-preview.nvim.
 
 ## Custom Commands and Shortcuts
 
@@ -44,12 +47,17 @@ Some plugins have their own dependencies that you have to install from somewhere
 | `<C-j>` or `<C-Down>` | Focus on editor below this one. |
 | `<C-k>` or `<C-Up>` | Focus on editor above this one. |
 | `<C-l>` or `<C-Right>` | Focus on editor to the right. |
+| `<C-c>` | Copy to system clipboard (not to neovim registers). |
+| `<C-x>` | Cut to system clipboard. |
+| `<C-v>` | Paste from system clipboard. |
+| `<C-a>` | Select all. |
 | `ts` | Switch to tab. Runs `:BufferLinePick`. | 
 | `td` | Close tab. Runs `:BufferLinePickClose`. |
 | `gD` | Go to declaration. (LSP) |
 | `gd` | Go to definition. (LSP) |
 | `gi` | Go to implementation. (LSP) |
 | `gr` | Go to references. (LSP) |
+| `gs` | Signature help. (LSP) |
 | `K` | Hover over variable/function/etc. (LSP) |
 | `<space>f` | Format code. (LSP) |
 | `<space>wa` | Add workspace folder. (LSP) |
