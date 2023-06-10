@@ -287,9 +287,8 @@ require("lazy").setup({
                 line_number_style()
             end
             --[[ Make startup look consistent ]]
-            transparent.toggle(false) -- set starting state to opaque
+            transparent.toggle(true) -- set starting state to opaque
             toggle_transparency({}) -- refresh certain settings
-            toggle_transparency({}) -- rerefresh certain settings and put it back to opaque
             --[[ End startup ]]
             vim.api.nvim_create_user_command("ToggleTransparency", toggle_transparency, {nargs = 0})
             -- toggle transparency
@@ -313,7 +312,11 @@ require("lazy").setup({
             vim.g.mkdp_auto_close = 0
             vim.g.mkdp_theme = "dark"
         end
+    },
+    {   -- hex editor
+        "RaafatTurki/hex.nvim",
+        config = function()
+            require("hex").setup()
+        end
     }
 })
-
-line_number_style()

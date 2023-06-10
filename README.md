@@ -21,6 +21,7 @@ Copy `./init.lua` to `~/.config/nvim/init.lua` and watch the magic happen.
 | [xiyaowong/transparent.nvim](https://github.com/xiyaowong/transparent.nvim) | Sets background transparency. |
 | [lambdalisue/suda.vim](https://github.com/lambdalisue/suda.vim) | Sudo write to readonly files. |
 | [iamcco/markdown-preview.nvim](https://github.com/iamcco/markdown-preview.nvim) | Start a server that previews your markdown documents in realtime. |
+| [RaafatTurki/hex.nvim](https://github.com/RaafatTurki/hex.nvim) | Hex editor for NeoVim. |
 
 
 ## External Software
@@ -35,6 +36,7 @@ Some plugins have their own dependencies that you have to install from somewhere
    - [ccls](https://github.com/MaskRay/ccls)
  - `sudo` for `lambdalisue/suda.vim`.
  - `node.js` and `yarn` for iamcco/markdown-preview.nvim.
+ - `xxd` for `RaafatTurki/hex.nvim`, either standalone or as part of the `vim` package.
 
 ## Custom Commands and Shortcuts
 
