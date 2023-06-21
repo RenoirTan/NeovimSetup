@@ -31,12 +31,15 @@ vim.keymap.set("n", "<C-l>", "<ESC><C-w>l", {noremap=true, silent=true})
 vim.keymap.set("n", "<C-Right>", "<ESC><C-w>l", {noremap=true, silent=true})
 
 -- Copy and paste to system clipboard instead of registers
--- copy: ctrl+c
+-- copy: ctrl+c or space+y
 vim.keymap.set({"n", "v"}, "<C-c>", "\"+y", {noremap=true, silent=true})
--- cut: ctrl+x
+vim.keymap.set({"n", "v"}, "<space>y", "\"+y", {noremap=true, silent=true})
+-- cut: ctrl+x or space+x
 vim.keymap.set({"n", "v"}, "<C-x>", "\"+x", {noremap=true, silent=true})
--- paste: ctrl+p
+vim.keymap.set({"n", "v"}, "<space>x", "\"+x", {noremap=true, silent=true})
+-- paste: ctrl+p or space+v
 vim.keymap.set({"n", "v"}, "<C-v>", "\"+p", {noremap=true, silent=true})
+vim.keymap.set({"n", "v"}, "<space>v", "\"+p", {noremap=true, silent=true})
 
 -- Select all: ctrl+a
 vim.keymap.set({"n", "v"}, "<C-a>", "<ESC>ggVG", {noremap=true, silent=true})
