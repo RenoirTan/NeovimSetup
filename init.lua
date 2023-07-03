@@ -80,7 +80,11 @@ require("lazy").setup({
         version = "*",
         dependencies = "nvim-tree/nvim-web-devicons",
         config = function()
-            require("bufferline").setup()
+            require("bufferline").setup({
+                options = {
+                    separator_style = "slant"
+                }
+            })
             -- switch to tab
             -- nnoremap <silent> ts :BufferLinePick<CR>
             vim.keymap.set("n", "ts", ":BufferLinePick<CR>", {
@@ -167,6 +171,7 @@ require("lazy").setup({
                     }
                 }
             }
+            lspconfig.erlangls.setup {}
 
             --[[ Stolen from https://github.com/neovim/nvim-lspconfig ]]
             -- Global mappings.
@@ -290,7 +295,8 @@ require("lazy").setup({
                 line_number_style()
             end
             --[[ Make startup look consistent ]]
-            transparent.toggle(true) -- set starting state to opaque
+            transparent.toggle(false) -- set starting state to opaque
+            transparent.toggle(true) -- set to transparent
             toggle_transparency({}) -- refresh certain settings
             --[[ End startup ]]
             vim.api.nvim_create_user_command("ToggleTransparency", toggle_transparency, {nargs = 0})
